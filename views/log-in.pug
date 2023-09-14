@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+
+  h1 Log-in 
+
+  form(action="", method="post")
+    div
+      label(for="username") Enter username 
+      input#username(type="text" name="username" placeholder="Username")
+    div 
+      label(for="password") Enter password 
+      input#password(type="password" name="password")
+
+    button(type="submit") Log-in 
+
+  if(message)
+    ul 
+      li!= message

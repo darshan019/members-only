@@ -1,0 +1,58 @@
+extends layout
+
+block content
+
+  nav.links 
+    h1= title
+    if(!user)
+      div(style="display: flex; gap: 7px;") 
+        button 
+          a(href="/log-in") Log-in
+        button 
+          a(href="/sign-up") Sign-up 
+    else 
+      div(style="display: flex; gap: 7px;") 
+        button(style="width: 100px")
+          a(href="/post") Create Post
+        if(user.member == false)
+          button(style="width: 100px")
+            a(href="/join-club") Join club 
+        else if(!user.admin) 
+          button(style="width: 100px")
+            a(href="/admin") Admin
+        button 
+          a(href="/log-out") Log-out 
+  main 
+    if(user) 
+      h2 Welcome #{user.userName} (#{user.email})
+
+    h2 Posts 
+    hr
+    if(posts.length > 0 && posts) 
+      ul 
+        for post in posts 
+          if(!user)
+            li 
+              h4= post.title 
+              p= post.text 
+          else if(!user.member)
+            li 
+              h4= post.title 
+              p= post.text  
+          else if(user.admin) 
+              li 
+                h3= post.title 
+                h4 By #{post.user.userName}
+                h4 On #{post.formatted_time}
+                p= post.text
+                button 
+                  a(href=`/delete/${post._id}`) Delete  
+          else 
+            li 
+              h3= post.title 
+              h4 By #{post.user.userName}
+              h4 On #{post.formatted_time}
+              p= post.text 
+            
+    else 
+      h2 No posts here!

@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+
+  h1 Delete post 
+
+  div 
+    h2= post.title 
+    h3 By #{post.user.userName}
+    h3 On #{post.formatted_time}
+    p= post.text
+
+  form(action="", method="post") 
+    button(type="submit") Delete 

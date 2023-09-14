@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+  h1 Admin Access 
+
+  form(action="", method="post") 
+    label(for="admin") Enter secret code to get admin access 
+    input(type="text" id="admin" name="admin") 
+
+    button(type="submit") Submit 
+
+  if(errors) 
+    ul 
+      for err in errors 
+        li!= err.msg

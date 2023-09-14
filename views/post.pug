@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+  h1 Create a new Post
+  
+  form(action="" method="POST")
+    div
+      label(for="title") Title 
+      input(type="text" value=(undefined == post.title ? "" : post.title) id="title" name="title" placeholder="Enter title")
+
+    div 
+      label(for="content") Enter your post content 
+      textarea#content(name="content", value=(undefined == post.text ? "" : post.text), cols="30", rows="10")
+
+    button(type="submit") Post
+
+  if(errors)
+    ul 
+      for err in errors 
+        li!= err.msg

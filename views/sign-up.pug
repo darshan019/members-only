@@ -1,0 +1,27 @@
+extends layout 
+
+block content 
+
+  h1 Sign-up 
+
+  form(action="", method="post") 
+    div
+      label(for="username") Enter username 
+      input#username(type="text" value=(user.userName != undefined ? user.userName : "") name="username" placeholder="username")
+    div
+      label(for="username") Enter email 
+      input#username(type="text" value=(user.email != undefined ? user.email : "" ) name="mail" placeholder="E-mail")
+    div 
+      label(for="password") Enter password 
+      input#password(type="password" value=(user.password != undefined ? user.password : "" ) name="password")
+    div 
+      label(for="confirm") Confirm password 
+      input#confirm(type="password" name="confirm")
+
+    button(type="submit") Sign-up 
+
+  if(errors)
+    - console.log(errors)
+    ul 
+      for err in errors 
+        li!= err.msg
