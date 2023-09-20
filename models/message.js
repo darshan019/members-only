@@ -14,7 +14,7 @@ MessageSchema.virtual("formatted_time").get(function() {
 
   const options = {
     year: 'numeric',
-    month: 'long', // Use 'long' for full month name, 'short' for abbreviated name
+    month: 'long',
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
