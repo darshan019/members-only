@@ -30,7 +30,11 @@ block content
     hr
     if(posts.length > 0 && posts) 
       ul 
+<<<<<<< HEAD
         for post in posts 
+=======
+        each post in posts 
+>>>>>>> 8b12cc1 (render fixes)
           if(!user)
             li 
               h4= post.title 
@@ -42,15 +46,15 @@ block content
           else if(user.admin) 
               li 
                 h3= post.title 
-                h4 By #{post.user.userName}
+                h4 By #{post.user && post.user.userName ? post.user.userName : 'Unknown User'}
                 h4 On #{post.formatted_time}
                 p= post.text
                 button 
                   a(href=`/delete/${post._id}`) Delete  
           else 
             li 
-              h3= post.title 
-              h4 By #{post.user.userName}
+              h3= post.title
+              h4 #{post.user && post.user.userName ? post.user.userName : 'Unknown User'}
               h4 On #{post.formatted_time}
               p= post.text 
             
